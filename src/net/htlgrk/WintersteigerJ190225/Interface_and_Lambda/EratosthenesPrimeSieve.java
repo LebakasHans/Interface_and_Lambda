@@ -3,28 +3,37 @@ package net.htlgrk.WintersteigerJ190225.Interface_and_Lambda;
 import java.util.ArrayList;
 
 public class EratosthenesPrimeSieve implements PrimeSieve{
-    ArrayList<Boolean> numbers = new ArrayList<>();
+    boolean[] numbers;
 
     @Override
     public boolean isPrime(int p) {
-        numbers.forEach(n -> n = true);
+        numbers = new boolean[p+1];
+        for(int i=0 ; i<=p ; i++) {
+            numbers[i] = true;
+        }
 
-        for(int n = 2; p*p <=p; p++)
+        for(int n = 2; n*n <=p; n++)
         {
             // If prime[p] is not changed, then it is a prime
-            if(numbers.get(n) == true)
+            if(numbers[n] == true)
             {
                 // Update all multiples of p
-                for(int i = n*n; i <= p; i += p)
-                    numbers.set(i, false);
+                for(int i = n*n; i <= p; i += n)
+                    numbers[i] = false;
             }
         }
 
-        return numbers.get(p);
+        return numbers[p];
     }
 
     @Override
     public void printPrimes() {
-        numbers.stream().filter(n -> n==true).forEach(n -> System.out.println(n));
+        int counter = 0;
+        for(boolean b : numbers){
+            if (b == true){
+                System.out.println(counter);
+            }
+            counter++;
+        }
     }
 }
