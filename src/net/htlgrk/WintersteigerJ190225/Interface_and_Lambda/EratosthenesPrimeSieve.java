@@ -20,7 +20,7 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
             }
         }
 
-        return false;
+        return numbers.get(p);
     }
 
     @Override
