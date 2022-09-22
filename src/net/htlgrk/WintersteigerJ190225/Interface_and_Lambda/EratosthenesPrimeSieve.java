@@ -3,10 +3,10 @@ package net.htlgrk.WintersteigerJ190225.Interface_and_Lambda;
 import java.util.ArrayList;
 
 public class EratosthenesPrimeSieve implements PrimeSieve{
+    ArrayList<Boolean> numbers = new ArrayList<>();
 
     @Override
     public boolean isPrime(int p) {
-        ArrayList<Boolean> numbers = new ArrayList<>();
         numbers.forEach(n -> n = true);
 
         for(int n = 2; p*p <=p; p++)
@@ -25,6 +25,6 @@ public class EratosthenesPrimeSieve implements PrimeSieve{
 
     @Override
     public void printPrimes() {
-
+        numbers.stream().filter(n -> n==true).forEach(n -> System.out.println(n));
     }
 }
